@@ -1,6 +1,8 @@
 # CEMA Data Science tasks
 ## Task 1
-![red-ribbon-aids-hiv-symbol-free-vector](https://github.com/user-attachments/assets/ef5e2f8b-cbd8-4e81-81c7-4356e7e3c27a)
+<div style="text-align: center;">
+    <img src="attachment:c48c06d4-123a-4faa-92b6-fbfa07f69025.jpg" alt="HIV Awareness Ribbon" width="300" height="300">
+</div>
 ### Problem Statement
 HIV continues to be a major public health issue in Africa, with a high number of people living with the virus, especially in sub-Saharan regions. While prevention and treatment efforts have improved, HIV is a lifelong condition, making it crucial to track data on this affected. This data helps us identify infection trends, prepare healthcare services to accommodate these patients, and address challenges like stigma and inequality.  Beyond health, HIV also impacts jobs, healthcare costs, and poverty levels, making it important to use data to create targeted interventions. By analyzing this information, governments and organizations can better allocate resources and create policies to help reduce transmission and improve the quality of life for those affected. </br>
 
