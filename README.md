@@ -1,5 +1,5 @@
 # CEMA Data Science tasks
-## Task 1
+## Task 1: Exploring HIV Trends and Poverty Dimensions Across WHO Regions
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/23735a41-50f6-485e-87aa-51e7687e3a40" alt="HIV Awareness Ribbon" width="300" height="300">
