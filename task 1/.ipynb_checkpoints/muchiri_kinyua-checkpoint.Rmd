@@ -1,0 +1,352 @@
+---
+title: Exploring HIV Trends and Poverty Dimensions Across WHO Regions
+jupyter: myenv
+---
+
+
+
+<div style="text-align: center;">
+    <img src="attachment:c48c06d4-123a-4faa-92b6-fbfa07f69025.jpg" alt="HIV Awareness Ribbon" width="300" height="300">
+</div>
+
+# 1. Business Understanding
+
+## 1.1 Problem Statement
+
+HIV continues to be a major public health issue in Africa, with a high number of people living with the virus, especially in sub-Saharan regions. While prevention and treatment efforts have improved, HIV is a lifelong condition, making it crucial to track data on this affected. This data helps us identify infection trends, prepare healthcare services to accommodate these patients, and address challenges like stigma and inequality. Beyond health, HIV also impacts jobs, healthcare costs, and poverty levels, making it important to use data to create targeted interventions. By analyzing this information, governments and organizations can better allocate resources and create policies to help reduce transmission and improve the quality of life for those affected.
+
+## 1.2 Objectives
+
+Create a visualization that shows the trend of HIV cases in the countries that contribute to 75% of the global burden </br>
+</br>
+Generate a visualization that displays the trend of HIV cases in the countries contributing to 75% of the burden within each WHO region (column called ParentLocationCode contains the WHO regions)
+
+# 2. Importing Libraries and Warnings
+
+```{python}
+import warnings
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+warnings.filterwarnings("ignore")
+from statsmodels.regression.mixed_linear_model import MixedLM
+```
+
+# 3. Data Understanding
+
+You are provided with a dataset from the World Health Organization (WHO) Global Observatory, containing data on people living with HIV at the country level from 2000 to 2023.
+
+```{python}
+hiv_data = pd.read_csv("data/HIV data 2000-2023.csv", encoding="latin1")
+hiv_data
+```
+
+You have also been provided with World Bank data on the multidimensional poverty headcount ratio, which includes factors such as income, educational attainment, school enrolment, electricity access, sanitation and drinking water.
+
+```{python}
+poverty_data = pd.read_excel("data/multidimensional_poverty.xlsx")
+poverty_data
+```
+
+We would like you to merge this dataset with the HIV data above and analyze the relationship between people living with HIV and multidimensional poverty, and the individual factors that contribute to the ratio. Remember to account for the random effects (country, year).
+
+```{python}
+hiv_data.columns
+```
+
+```{python}
+poverty_data.columns
+```
+
+```{python}
+hiv_data.info()
+```
+
+```{python}
+poverty_data.info()
+```
+
+```{python}
+hiv_data.describe()
+```
+
+```{python}
+poverty_data.describe()
+```
+
+```{python}
+hiv_data.shape
+```
+
+```{python}
+poverty_data.shape
+```
+
+# 4. Data Cleaning
+
+## Renaming columns
+
+```{python}
+hiv_data.rename(columns={
+    'Location': 'Country',
+    'Period': 'Year',
+    'Value': 'HIV_Population'
+}, inplace=True)
+
+hiv_data.columns
+```
+
+```{python}
+# Rename columns for ease of use
+poverty_data.columns = [
+    'Region', 'Country_Code', 'Country', 'Year', 'Survey_Name',
+    'Survey_Year', 'Survey_Coverage', 'Welfare_Type', 'Survey_Comparability',
+    'Monetary', 'Education_Attainment', 'Education_Enrollment',
+    'Electricity', 'Sanitation', 'Drinking_Water', 'Multidimensional_Poverty'
+]
+
+# Drop the first and second rows
+poverty_data = poverty_data.drop(index=[0, 1]).reset_index(drop=True)
+poverty_data
+```
+
+## Keeping only the relevant columns
+
+```{python}
+hiv_data = hiv_data[['Country', 'Year', 'HIV_Population', 'ParentLocationCode']]
+hiv_data
+```
+
+```{python}
+poverty_data = poverty_data[[
+    'Country',
+    'Country_Code',
+    'Year',
+    'Monetary',
+    'Education_Attainment',
+    'Education_Enrollment',
+    'Electricity',
+    'Sanitation',
+    'Drinking_Water',
+    'Multidimensional_Poverty'
+]]
+
+poverty_data
+```
+
+## Duplicates
+
+```{python}
+hiv_data.duplicated().sum()
+```
+
+```{python}
+poverty_data.duplicated().sum()
+```
+
+## Missing Values
+
+```{python}
+poverty_data.isna().sum()
+```
+
+```{python}
+poverty_data
+```
+
+```{python}
+# Replace '-' strings with actual NaN values
+poverty_data.replace('-', pd.NA, inplace=True)
+poverty_data
+```
+
+```{python}
+# Columns to convert
+numeric_columns = [
+    'Monetary', 'Education_Attainment', 'Education_Enrollment',
+    'Electricity', 'Sanitation', 'Drinking_Water', 'Multidimensional_Poverty'
+]
+
+# Convert to numeric
+poverty_data[numeric_columns] = poverty_data[numeric_columns].apply(pd.to_numeric, errors='coerce')
+poverty_data
+```
+
+```{python}
+poverty_data[numeric_columns] = poverty_data[numeric_columns].fillna(poverty_data[numeric_columns].mean())
+poverty_data
+```
+
+```{python}
+hiv_data.isna().sum()
+```
+
+```{python}
+hiv_data
+```
+
+There are rows in the HIV_Population column called No data
+
+```{python}
+hiv_data[hiv_data['HIV_Population'] == 'No data'].shape[0]
+```
+
+```{python}
+hiv_data[hiv_data['HIV_Population'] == 'No data']
+```
+
+```{python}
+# dropping the missing values
+hiv_data = hiv_data[hiv_data['HIV_Population'] != 'No data']
+hiv_data
+```
+
+```{python}
+# Removing range values 
+hiv_data = hiv_data[hiv_data['HIV_Population'] != 'No data'].copy()
+hiv_data['HIV_Population'] = hiv_data['HIV_Population'].str.extract(r'(\d[\d\s]*)')[0]
+hiv_data['HIV_Population'] = hiv_data['HIV_Population'].str.replace(' ', '').astype(int)
+
+hiv_data
+```
+
+# 5. EDA
+
+Create a visualization that shows the trend of HIV cases in the countries that contribute to 75% of the global burden
+
+```{python}
+# Total HIV per country
+total_by_country = hiv_data.groupby('Country')['HIV_Population'].sum().reset_index()
+
+# Calculate cumulative % contribution
+total_by_country = total_by_country.sort_values(by='HIV_Population', ascending=False)
+total = total_by_country['HIV_Population'].sum()
+total_by_country['CumulativePercent'] = 100 * total_by_country['HIV_Population'].cumsum() / total
+
+# Filter countries that contribute to 75%
+top_75_countries = total_by_country[total_by_country['CumulativePercent'] <= 75]['Country']
+
+# Filter and plot
+top_data = hiv_data[hiv_data['Country'].isin(top_75_countries)]
+
+# Pivot the data to prepare for bar chart
+pivot_df = top_data.pivot_table(index='Year', columns='Country', values='HIV_Population', aggfunc='sum').fillna(0)
+
+# Plot
+pivot_df.plot(kind='bar', stacked=True, figsize=(15, 8), colormap='tab20')
+plt.title('HIV Burden by Year in Top 75% Contributing Countries', fontsize=16)
+plt.ylabel('Estimated People Living with HIV')
+plt.xlabel('Year')
+plt.legend(title='Country', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.grid(axis='y')
+plt.show()
+```
+
+Generate a visualization that displays the trend of HIV cases in the countries contributing to 75% of the burden within each WHO region (column called ParentLocationCode contains the WHO regions) 
+
+```{python}
+# Calculate total HIV per country within each region
+region_country_totals = hiv_data.groupby(['ParentLocationCode', 'Country'])['HIV_Population'].sum().reset_index()
+
+# Identify top 75% contributing countries per region
+top_75_countries_by_region = {}
+
+for region in region_country_totals['ParentLocationCode'].unique():
+    region_df = region_country_totals[region_country_totals['ParentLocationCode'] == region].sort_values(by='HIV_Population', ascending=False)
+    total = region_df['HIV_Population'].sum()
+    region_df['CumulativePercent'] = 100 * region_df['HIV_Population'].cumsum() / total
+    top_countries = region_df[region_df['CumulativePercent'] <= 75]['Country'].tolist()
+    top_75_countries_by_region[region] = top_countries
+
+# Filter original hiv_data for only top 75% countries in each region
+filtered_data = hiv_data[
+    hiv_data.apply(lambda row: row['Country'] in top_75_countries_by_region.get(row['ParentLocationCode'], []), axis=1)
+]
+
+# Plot trends by region
+regions = filtered_data['ParentLocationCode'].unique()
+n_regions = len(regions)
+
+fig, axes = plt.subplots(n_regions, 1, figsize=(15, 5 * n_regions), sharex=True)
+
+if n_regions == 1:
+    axes = [axes]  # make sure it's iterable
+
+for ax, region in zip(axes, regions):
+    region_data = filtered_data[filtered_data['ParentLocationCode'] == region]
+    pivot_df = region_data.pivot_table(index='Year', columns='Country', values='HIV_Population', aggfunc='sum').fillna(0)
+    
+    pivot_df.plot(kind='bar', stacked=True, colormap='tab20', ax=ax)
+    ax.set_title(f'HIV Trend in {region} Region (Top 75% Countries)', fontsize=14)
+    ax.set_ylabel('HIV Population')
+    ax.legend(title='Country', bbox_to_anchor=(1.01, 1), loc='upper left')
+    ax.grid(axis='y')
+
+plt.xlabel('Year')
+plt.tight_layout()
+plt.show()
+```
+
+## Combining hiv_data and poverty_data
+
+We would like you to merge this dataset with the HIV data above and analyze the relationship between people living with HIV and multidimensional poverty, and the individual factors that contribute to the ratio. Remember to account for the random effects (country, year).
+
+```{python}
+# Get all possible pairs within same country
+df = pd.merge(hiv_data, poverty_data, on='Country', how='inner', suffixes=('_hiv', '_poverty'))
+
+# Calculate year difference
+df['YearDiff'] = (df['Year_hiv'] - df['Year_poverty']).abs()
+
+# Keep the row with the smallest year difference per HIV data row
+df = df.loc[df.groupby(['Country', 'Year_hiv'])['YearDiff'].idxmin()].copy()
+
+# Rename to keep consistent
+df = df.rename(columns={'Year_hiv': 'Year'})
+df
+```
+
+# 6. Modelling
+
+```{python}
+# Log-transform the target variable
+df['log_HIV_Population'] = np.log1p(df['HIV_Population'])
+
+# Select predictors
+predictors = [
+    'Monetary', 'Education_Attainment', 'Education_Enrollment',
+    'Electricity', 'Sanitation', 'Drinking_Water', 'Multidimensional_Poverty'
+]
+
+# Fixed effects
+X = sm.add_constant(df[predictors])
+
+# Mixed effects model — random intercept by country
+model = MixedLM(
+    endog=df['log_HIV_Population'],
+    exog=X,
+    groups=df['Country']
+)
+
+result = model.fit()
+
+print(result.summary())
+```
+
+## Interpretation
+
+Multidimensional Poverty is significantly associated with higher HIV population (positive coefficient, p=0.014).
+
+Education Enrollment and Electricity access are negatively associated — higher access → fewer HIV cases.
+
+Other factors (Monetary, Sanitation, etc.) may not be statistically significant.
+
+So, multidimensional poverty and education/electricity access are the most influential.
+
+## Write a paragraph on your findings.
+
+The mixed-effects model reveals significant insights into the relationship between multidimensional poverty and HIV prevalence across countries. Notably, Multidimensional Poverty is positively and significantly associated with the number of people living with HIV (p = 0.014), suggesting that as poverty increases—considering factors like education, healthcare access, and living conditions—so does HIV prevalence. Among the individual poverty indicators, Education Enrollment and Access to Electricity are both negatively and significantly associated with HIV (p = 0.005 and p = 0.031, respectively), indicating that higher school enrollment rates and improved electricity access may play protective roles against HIV spread. Other variables, such as sanitation, drinking water, and monetary poverty, did not show significant effects, which could imply that HIV outcomes are more strongly influenced by systemic and structural dimensions of poverty rather than income alone. Additionally, substantial between-country variability (Group Var = 3.04) highlights the importance of accounting for national contexts when addressing HIV, as some countries exhibit much higher or lower prevalence than expected, even after controlling for these poverty-related factors.
+
