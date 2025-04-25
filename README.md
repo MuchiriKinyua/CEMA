@@ -10,13 +10,18 @@ HIV continues to be a major public health issue in Africa, with a high number of
 
 ### Data Analysis
 -	Create a visualization that shows the trend of HIV cases in the countries that contribute to 75% of the global burden </br>
+
+![image](https://github.com/user-attachments/assets/a18f49d8-4afa-4706-8a06-ed533d63fa74)
+
 -	Generate a visualization that displays the trend of HIV cases in the countries contributing to 75% of the burden within each WHO region (column called ParentLocationCode contains the WHO regions) </br>
+
+![image](https://github.com/user-attachments/assets/f02eca1f-2d43-4da2-8951-d12b3ae4fcee)
 
 You have also been provided with World Bank data on the multidimensional poverty headcount ratio, which includes factors such as income, educational attainment, school enrolment, electricity access, sanitation and drinking water. </br>
 
 We would like you to merge this dataset with the HIV data above and analyze the relationship between people living with HIV and multidimensional poverty, and the individual factors that contribute to the ratio. Remember to account for the random effects (country, year).
 
-Write a paragraph on your findings.
+![image](https://github.com/user-attachments/assets/a523d3f5-f545-4128-9d13-3a88c74969d7)
 
 ## Task 2
 You have been provided with data on the under-five mortality rate and neonatal mortality rate for the African region, which has been downloaded from the UN Inter-agency Group for Child Mortality Estimation. Your task is to: </br>
