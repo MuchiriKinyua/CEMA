@@ -25,11 +25,11 @@ We would like you to merge this dataset with the HIV data above and analyze the 
 
 ## Task 2
 You have been provided with data on the under-five mortality rate and neonatal mortality rate for the African region, which has been downloaded from the UN Inter-agency Group for Child Mortality Estimation. Your task is to: </br>
+
+
+
 -	Filter data for the eight countries belonging to the East African Community (list here: https://www.eac.int/overview-of-eac) </br>
 -	Visualize the latest estimate of each indicator at the country level using shapefiles, which can be downloaded from www.gadm.org. </br>
--	Show the average trends in the mortality rates over time (plot the average trend line and add the points in the graphic for the country level estimates for each indicator. Expectation: two plots). </br>
--	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
-
 ![image](https://github.com/user-attachments/assets/82b31589-b069-4ef4-82bc-ddf69ec91470)
 South Sudan and Somalia consistently have the highest under-five mortality rates (above 100 deaths per 1000 live births for much of the period).
 
@@ -39,6 +39,7 @@ The average mortality rate across East Africa shows a steady decline over the ye
 
 Some countries (like Somalia and South Sudan) have a lot more fluctuations, while others (like Rwanda and Kenya) show a smoother decline.
 
+-	Show the average trends in the mortality rates over time (plot the average trend line and add the points in the graphic for the country level estimates for each indicator. Expectation: two plots). </br>
 ![image](https://github.com/user-attachments/assets/7cd995a3-ab77-4ed2-b562-705f9d3299b6)
 The rates are lower than under-five mortality overall (as expected), but similar country patterns.
 
@@ -53,6 +54,7 @@ South Sudan and Somalia are deep red, meaning very high under-five mortality (>1
 
 Kenya, Tanzania, and Rwanda are much lighter, indicating lower under-five mortality (closer to 40-50 deaths/1000).
 
+-	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
 ![image](https://github.com/user-attachments/assets/b8394175-b171-4c64-9db6-b5fbab036ee0)
 Again, South Sudan and Somalia are the darkest, meaning they have the highest neonatal deaths (>37 deaths/1000).
 
