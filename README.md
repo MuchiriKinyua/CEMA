@@ -34,6 +34,10 @@ You have been provided with data on the under-five mortality rate and neonatal m
 
 ![image](https://github.com/user-attachments/assets/7cd995a3-ab77-4ed2-b562-705f9d3299b6)
 
+![image](https://github.com/user-attachments/assets/65659267-1591-4692-9d9f-b8e9fc5dc6e6)
+
+![image](https://github.com/user-attachments/assets/b8394175-b171-4c64-9db6-b5fbab036ee0)
+
 You should work on an RMD document that is saved in your name, e.g juma_fulani.rmd. </br>
 Kindly ensure you show the code in your data. </br>
 
