@@ -21,6 +21,14 @@ The HIV epidemic remains highly concentrated in a small number of countries — 
 
 ![image](https://github.com/user-attachments/assets/f02eca1f-2d43-4da2-8951-d12b3ae4fcee)
 
+In the AFR region, South Africa, Nigeria, Uganda, Kenya, and Zimbabwe dominate the HIV burden.
+
+The HIV burden shows a gradual increase up to around 2015–2020, after which it levels off or shows early signs of decline.
+
+Just like globally, a few countries in Africa carry a disproportionate share of the HIV burden.
+
+The pattern highlights regional inequality: even within Africa, a small subset of countries carry the majority of cases.
+
 #### Merge this dataset with the HIV data above and analyze the relationship between people living with HIV and multidimensional poverty, and the individual factors that contribute to the ratio. Remember to account for the random effects (country, year).
 
 ![image](https://github.com/user-attachments/assets/a523d3f5-f545-4128-9d13-3a88c74969d7)
