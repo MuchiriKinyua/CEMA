@@ -30,6 +30,10 @@ You have been provided with data on the under-five mortality rate and neonatal m
 -	Show the average trends in the mortality rates over time (plot the average trend line and add the points in the graphic for the country level estimates for each indicator. Expectation: two plots). </br>
 -	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
 
+![image](https://github.com/user-attachments/assets/82b31589-b069-4ef4-82bc-ddf69ec91470)
+
+![image](https://github.com/user-attachments/assets/7cd995a3-ab77-4ed2-b562-705f9d3299b6)
+
 You should work on an RMD document that is saved in your name, e.g juma_fulani.rmd. </br>
 Kindly ensure you show the code in your data. </br>
 
