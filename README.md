@@ -1,4 +1,4 @@
-# CEMA Data Science tasks
+# CEMA Data Science Tasks
 ## Task 1: Exploring HIV Trends and Poverty Dimensions Across WHO Regions
 
 ### Problem Statement
