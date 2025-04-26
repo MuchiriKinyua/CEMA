@@ -54,13 +54,14 @@ South Sudan and Somalia are deep red, meaning very high under-five mortality (>1
 
 Kenya, Tanzania, and Rwanda are much lighter, indicating lower under-five mortality (closer to 40-50 deaths/1000).
 
--	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
 ![image](https://github.com/user-attachments/assets/b8394175-b171-4c64-9db6-b5fbab036ee0)
 Again, South Sudan and Somalia are the darkest, meaning they have the highest neonatal deaths (>37 deaths/1000).
 
 Kenya, Rwanda, and Tanzania show the lowest neonatal mortality, shaded much lighter.
 
 Most other countries fall somewhere in between.
+
+-	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
 
 You should work on an RMD document that is saved in your name, e.g juma_fulani.rmd. </br>
 Kindly ensure you show the code in your data. </br>
