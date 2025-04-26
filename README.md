@@ -1,10 +1,6 @@
 # CEMA Data Science tasks
 ## Task 1: Exploring HIV Trends and Poverty Dimensions Across WHO Regions
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/23735a41-50f6-485e-87aa-51e7687e3a40" alt="HIV Awareness Ribbon" width="300" height="300">
-</p>
-
 ### Problem Statement
 HIV continues to be a major public health issue in Africa, with a high number of people living with the virus, especially in sub-Saharan regions. While prevention and treatment efforts have improved, HIV is a lifelong condition, making it crucial to track data on this affected. This data helps us identify infection trends, prepare healthcare services to accommodate these patients, and address challenges like stigma and inequality.  Beyond health, HIV also impacts jobs, healthcare costs, and poverty levels, making it important to use data to create targeted interventions. By analyzing this information, governments and organizations can better allocate resources and create policies to help reduce transmission and improve the quality of life for those affected. </br>
 
