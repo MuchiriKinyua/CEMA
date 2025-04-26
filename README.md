@@ -62,6 +62,7 @@ Kenya, Rwanda, and Tanzania show the lowest neonatal mortality, shaded much ligh
 Most other countries fall somewhere in between.
 
 -	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
+![image](https://github.com/user-attachments/assets/b055e4e9-f98e-4175-82ce-3166610566e6)
 
 You should work on an RMD document that is saved in your name, e.g juma_fulani.rmd. </br>
 Kindly ensure you show the code in your data. </br>
