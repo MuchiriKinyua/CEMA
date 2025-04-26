@@ -19,13 +19,13 @@ We would like you to merge this dataset with the HIV data above and analyze the 
 
 ![image](https://github.com/user-attachments/assets/a523d3f5-f545-4128-9d13-3a88c74969d7)
 
-## Task 2
-You have been provided with data on the under-five mortality rate and neonatal mortality rate for the African region, which has been downloaded from the UN Inter-agency Group for Child Mortality Estimation. Your task is to: </br>
+## Task 2: Mapping Child Mortality Trends Across the East African Community
+### Problem Statement
+Child mortality remains a major public health concern in the East African Community (EAC), where disparities in healthcare access and socioeconomic factors contribute to varying outcomes across countries. This analysis aims to explore spatial and temporal patterns of under-five and neonatal mortality rates within the EAC region. By leveraging geospatial data and time-series visualizations, the project seeks to identify countries with the highest burden of child mortality and uncover regional trends, supporting evidence-based interventions and policymaking. </br>
 
-
-
-### Filter data for the eight countries belonging to the East African Community (list here: https://www.eac.int/overview-of-eac) </br>
-### Visualize the latest estimate of each indicator at the country level using shapefiles, which can be downloaded from www.gadm.org. </br>
+### Data Analysis
+#### Filter data for the eight countries belonging to the East African Community (list here: https://www.eac.int/overview-of-eac) </br>
+#### Visualize the latest estimate of each indicator at the country level using shapefiles, which can be downloaded from www.gadm.org. </br>
 ![image](https://github.com/user-attachments/assets/82b31589-b069-4ef4-82bc-ddf69ec91470)
 South Sudan and Somalia consistently have the highest under-five mortality rates (above 100 deaths per 1000 live births for much of the period). </br>
 Kenya, Rwanda, Tanzania, and Uganda show much lower rates — below 70 deaths/1000 births, and they keep decreasing over time. </br>
