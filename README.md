@@ -9,6 +9,14 @@ HIV continues to be a major public health issue in Africa, with a high number of
 
 ![image](https://github.com/user-attachments/assets/a18f49d8-4afa-4706-8a06-ed533d63fa74)
 
+The overall HIV burden globally remained high from 2000 to 2023 — no sharp drop is visible.
+
+Certain countries like South Africa, Nigeria, and Mozambique appear to contribute very large portions to the global burden every year (these countries have thicker bands in the stack).
+
+The number of people living with HIV slightly increases between 2000 and around 2015–2020, and then appears to stabilize or slightly decrease.
+
+The HIV epidemic remains highly concentrated in a small number of countries — that's why top contributors are enough to represent 75% of the global burden.
+
 #### Generate a visualization that displays the trend of HIV cases in the countries contributing to 75% of the burden within each WHO region (column called ParentLocationCode contains the WHO regions) </br>
 
 ![image](https://github.com/user-attachments/assets/f02eca1f-2d43-4da2-8951-d12b3ae4fcee)
