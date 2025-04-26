@@ -31,12 +31,34 @@ You have been provided with data on the under-five mortality rate and neonatal m
 -	Based on your visualizations, identify the countries with the highest under-five mortality rates in East Africa and the highest neonatal mortality. </br>
 
 ![image](https://github.com/user-attachments/assets/82b31589-b069-4ef4-82bc-ddf69ec91470)
+South Sudan and Somalia consistently have the highest under-five mortality rates (above 100 deaths per 1000 live births for much of the period).
+
+Kenya, Rwanda, Tanzania, and Uganda show much lower rates — below 70 deaths/1000 births, and they keep decreasing over time.
+
+The average mortality rate across East Africa shows a steady decline over the years.
+
+Some countries (like Somalia and South Sudan) have a lot more fluctuations, while others (like Rwanda and Kenya) show a smoother decline.
 
 ![image](https://github.com/user-attachments/assets/7cd995a3-ab77-4ed2-b562-705f9d3299b6)
+The rates are lower than under-five mortality overall (as expected), but similar country patterns.
+
+South Sudan and Somalia again show the highest neonatal mortality rates (around 40–45 deaths per 1000 births).
+
+Kenya, Rwanda, and Tanzania again have much better outcomes (around 20–25 deaths per 1000).
+
+The average neonatal mortality across the region is steadily declining, although the decline is slower compared to the under-five mortality rate.
 
 ![image](https://github.com/user-attachments/assets/65659267-1591-4692-9d9f-b8e9fc5dc6e6)
+South Sudan and Somalia are deep red, meaning very high under-five mortality (>100 deaths/1000).
+
+Kenya, Tanzania, and Rwanda are much lighter, indicating lower under-five mortality (closer to 40-50 deaths/1000).
 
 ![image](https://github.com/user-attachments/assets/b8394175-b171-4c64-9db6-b5fbab036ee0)
+Again, South Sudan and Somalia are the darkest, meaning they have the highest neonatal deaths (>37 deaths/1000).
+
+Kenya, Rwanda, and Tanzania show the lowest neonatal mortality, shaded much lighter.
+
+Most other countries fall somewhere in between.
 
 You should work on an RMD document that is saved in your name, e.g juma_fulani.rmd. </br>
 Kindly ensure you show the code in your data. </br>
