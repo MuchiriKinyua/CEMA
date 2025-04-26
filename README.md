@@ -39,7 +39,6 @@ The average mortality rate across East Africa shows a steady decline over the ye
 
 Some countries (like Somalia and South Sudan) have a lot more fluctuations, while others (like Rwanda and Kenya) show a smoother decline.
 
--	Show the average trends in the mortality rates over time (plot the average trend line and add the points in the graphic for the country level estimates for each indicator. Expectation: two plots). </br>
 ![image](https://github.com/user-attachments/assets/7cd995a3-ab77-4ed2-b562-705f9d3299b6)
 The rates are lower than under-five mortality overall (as expected), but similar country patterns.
 
@@ -49,6 +48,7 @@ Kenya, Rwanda, and Tanzania again have much better outcomes (around 20–25 deat
 
 The average neonatal mortality across the region is steadily declining, although the decline is slower compared to the under-five mortality rate.
 
+-	Show the average trends in the mortality rates over time (plot the average trend line and add the points in the graphic for the country level estimates for each indicator. Expectation: two plots). </br>
 ![image](https://github.com/user-attachments/assets/65659267-1591-4692-9d9f-b8e9fc5dc6e6)
 South Sudan and Somalia are deep red, meaning very high under-five mortality (>100 deaths/1000).
 
